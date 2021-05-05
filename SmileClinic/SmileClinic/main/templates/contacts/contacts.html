@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Центр современной стоматологии</title>
+</head>
+<body>
+    <header id="Header">
+        <div class="header-content">
+            <div class="header-content_logo">
+                <a href="/index"><img src="{% static 'image/logo.svg' %}" alt=""></a>
+            </div>
+            <nav>
+                <a href="/allspec">Все специалисты</a>
+                <a href="/my_notes">Мои записи</a>
+                <a href="/about_company">О компании</a>
+                <a href="/contacts">Контакты</a>
+            </nav>
+            <div class="nav" @click="menu = !menu">
+                <div class="menu"></div>
+                <div class="menu"></div>
+                <div class="menu"></div>
+            </div>
+            <div class="nav-hover" :class = "{'nav-active': menu }">
+                <a href="/allspec">Все специалисты</a>
+                <a href="/my_notes">Мои записи</a>
+                <a href="/about_company">О компании</a>
+                <a href="/contacts">Контакты</a>
+            </div>
+            <div class="header-content_user">
+                <span>Чабанян А.М</span>
+                <img src="{% static 'image/fotodef.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="filter" v-show="menu" @click="menu = !menu"></div>
+    </header>
+    <section class="contacts">
+        <div class="contacts_container">
+            <div class="container_headline">
+                <h1>Контакты</h1>
+            </div>
+            <div class="container_info">
+                <span>email: smileclinic@mail.ru</span>
+                <span>phone: +7-(918)-000-00-00</span>
+                <span>phone: +7-(918)-000-11-11</span>
+            </div>
+            <div class="container_headline">
+                <h1>На карте</h1>
+                <span>г.Краснодар, ул Чекистов 111</span>
+            </div>
+            <div class="container_map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2819.519687991088!2d38.92065031580948!3d45.034674970021165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40f04f1fc7e0421f%3A0x893122e2cea9db08!2z0L_RgC4g0KfQtdC60LjRgdGC0L7QsiwgMTExLCDQmtGA0LDRgdC90L7QtNCw0YAsINCa0YDQsNGB0L3QvtC00LDRgNGB0LrQuNC5INC60YDQsNC5LCAzNTAwMDQ!5e0!3m2!1sru!2sru!4v1585504590450!5m2!1sru!2sru" width="100%" height="300px" frameborder="0" style="border:0; overflow: hidden;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+
+    </section>
+    <script >
+        let Header = new Vue({
+            el: 'Header',
+            data: {
+                menu: false,
+            }
+        })
+    </script>
+</body>
+</html>

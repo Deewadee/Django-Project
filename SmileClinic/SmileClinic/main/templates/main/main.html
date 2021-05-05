@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Центр современной стоматологии</title>
+</head>
+<body>
+    <div class="entrance_container" id="log" v-show="main">
+        <div class="entrance_content" v-show="ex">
+            <form action="#">
+                <h1>Вход</h1>
+                <input type="email" placeholder="Логин" name="username" id="username">
+                <input type="password" placeholder="Пароль" name="password" id="password">
+                <button>Войти</button>
+            </form>
+            <p href="#" class="register" @click="reg = !reg, ex = !ex">Регистрация</p>
+        </div>
+
+        <div class="login-form" v-show="reg">
+            <div class="login-form_container">
+                <div class="exit" @click="reg = !reg, ex = !ex">
+                    <div class="back"><img src="./assets/img/back.png" alt=""></div>
+                    <p>вернуться</p>
+                </div>
+                <h2 class="login-heading">Регистрация</h2>
+                <form action="#">
+                    <div class="form-control">
+                        <label for="first_name">Имя</label>
+                        <input type="text" name="first_name" id="first_name" class="login-input">
+                    </div>
+                    <div class="form-control">
+                        <label for="last_name">Фамилия</label>
+                        <input type="text" name="last_name" id="last_name" class="login-input">
+                    </div>
+                    <div class="form-control">
+                        <label for="patronymic">Отчество</label>
+                        <input type="text" name="patronymic" id="patronymic" class="login-input">
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="login-input">
+                    </div>
+                    <div class="form-control mb-more">
+                        <label for="password">Пароль</label>
+                        <input type="password" name="password" id="password" class="login-input">
+                    </div>
+                    <div class="form-control">
+                        <button type="submit" class="btn-submit">Создать аккаунт</button>
+                    </div>
+                    <div class="form-control">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        let log = new Vue ({
+            el: '#log',
+            data: {
+                main: true,
+                reg : false,
+                ex: true
+            }
+        })
+    </script>
+</body>
+</html>

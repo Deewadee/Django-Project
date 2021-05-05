@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Центр современной стоматологии</title>
+</head>
+<body>
+    <header id="Header">
+        <div class="header-content">
+            <div class="header-content_logo">
+                <a href="/index"><img src="{% static 'image/logo.svg' %}" alt=""></a>
+            </div>
+            <nav>
+                <a href="/allspec">Все специалисты</a>
+                <a href="/my_notes">Мои записи</a>
+                <a href="/about_company">О компании</a>
+                <a href="/contacts">Контакты</a>
+            </nav>
+            <div class="nav" @click="menu = !menu">
+                <div class="menu"></div>
+                <div class="menu"></div>
+                <div class="menu"></div>
+            </div>
+            <div class="nav-hover" :class = "{'nav-active': menu }">
+                <a href="/allspec">Все специалисты</a>
+                <a href="/my_notes">Мои записи</a>
+                <a href="/about_company">О компании</a>
+                <a href="/contacts">Контакты</a>
+            </div>
+            <div class="header-content_user">
+                <span>Чабанян А.М</span>
+                <img src="{% static 'image/fotodef.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="filter" v-show="menu" @click="menu = !menu"></div>
+    </header>
+    <section class="allspec" id="SignUp">
+        <div class="allspec_container">
+            <div class="container_headline">
+                <h1>Все специалисты</h1>
+            </div>
+            <div class="container_card">
+                {% for specialist in Specialists %}
+                    <div class="card-content">
+                        <div class="foto">
+                            <img src="{% static 'image/fotodef.svg' %}" alt="">
+                        </div>
+                        <span>{{specialist.surname}} {{specialist.name}} {{specialist.secondname}}</span>
+                        <div class="info-doctor">
+                            <p>Стоматолог</p>
+                            <p>Опыт работы: более {% if specialist.expirience >= 10 %}10-ти лет
+                                                      {% elif specialist.expirience >= 5 %}5-ти лет
+                                                      {% elif specialist.expirience >= 3 %}3-х лет
+                                                      {% elif specialist.expirience >= 1 %}1-го года
+                                                      {% endif %}</p>
+                        </div>
+                        <button @click="SignUp = !SignUp">Записаться</button>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="filter" v-show="SignUp"></div>
+        <div class="modal" v-show="SignUp">
+            <div class="clear" @click="SignUp = !SignUp">
+               <img src="{% static 'image/clear.svg' %}" alt="">
+            </div>
+            <h1>Запись на прием</h1>
+            <form action="">
+                <label for="email">Ваш email</label>
+                <input type="email" id="email" name="email">
+                <label for="date">Выберите дату</label>
+                <input type="date" name="date" id="date">
+                <label for="time">Выберите время</label>
+                <input type="time" name="time" id="time">
+                <input type="submit" value="Записаться" class="button">
+            </form>
+        </div>
+    </section>
+
+    <script >
+        var SignUp = new Vue({
+            el: '#SignUp',
+            data: {
+                SignUp: false,
+            }
+        })
+        let Header = new Vue({
+            el: 'Header',
+            data: {
+                menu: false,
+            }
+        })
+    </script>
+</body>
+</html>

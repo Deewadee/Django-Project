@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Центр современной стоматологии</title>
+</head>
+<body>
+    <header id="Header">
+        <div class="header-content">
+            <div class="header-content_logo">
+                <a href="/index"><img src="{% static 'image/logo.svg' %}" alt=""></a>
+            </div>
+            <nav>
+                <a href="/allspec">Все специалисты</a>
+                <a href="/my_notes">Мои записи</a>
+                <a href="/about_company">О компании</a>
+                <a href="/contacts">Контакты</a>
+            </nav>
+            <div class="nav" @click="menu = !menu">
+                <div class="menu"></div>
+                <div class="menu"></div>
+                <div class="menu"></div>
+            </div>
+            <div class="nav-hover" :class = "{'nav-active': menu }">
+                <a href="/allspec">Все специалисты</a>
+                <a href="/my_notes">Мои записи</a>
+                <a href="/about_company">О компании</a>
+                <a href="/contacts">Контакты</a>
+            </div>
+            <div class="header-content_user">
+                <span>Чабанян А.М</span>
+                <img src="{% static 'image/fotodef.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="filter" v-show="menu" @click="menu = !menu"></div>
+    </header>
+    <section class="my_notes">
+        <div class="my_notes_container">
+            <div class="container-my_notes">
+                <div class="my_notes-headline">Мои записи</div>
+                <div class="my_notes-card">
+                    <div class="card-item">
+                        <div class="headline">
+                            <img src="{% static 'image/gal.svg' %}" alt="">
+                            <span>Запись подтверждена</span>
+                        </div>
+                        <div class="info">
+                            <p>Дата: 01.01.2020</p>
+                            <p>Время: 15:00</p>
+                            <p>Специалист: Иванов Иван Иванович</p>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <div class="headline">
+                            <img src="{% static 'image/gal.svg' %}" alt="">
+                            <span>Запись подтверждена</span>
+                        </div>
+                        <div class="info">
+                            <p>Дата: 01.01.2020</p>
+                            <p>Время: 15:00</p>
+                            <p>Специалист: Иванов Иван Иванович</p>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <div class="headline">
+                            <img src="{% static 'image/gal.svg' %}" alt="">
+                            <span>Запись подтверждена</span>
+                        </div>
+                        <div class="info">
+                            <p>Дата: 01.01.2020</p>
+                            <p>Время: 15:00</p>
+                            <p>Специалист: Иванов Иван Иванович</p>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <div class="headline">
+                            <img src="{% static 'image/gal.svg' %}" alt="">
+                            <span>Запись подтверждена</span>
+                        </div>
+                        <div class="info">
+                            <p>Дата: 01.01.2020</p>
+                            <p>Время: 15:00</p>
+                            <p>Специалист: Иванов Иван Иванович</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-past_visit">
+                <div class="past_visit-headline">Прошлые посещения</div>
+                <div class="past_visit-card">
+                    <div class="card-item green">
+                        <div class="headline">
+                            <span>Обследование проведено</span>
+                        </div>
+                        <div class="info">
+                            <p>Дата: 01.01.2020</p>
+                            <p>Время: 15:00</p>
+                            <p>Специалист: Иванов Иван Иванович</p>
+                        </div>
+                    </div>
+                    <div class="card-item green">
+                        <div class="headline">
+                            <span>Обследование проведено</span>
+                        </div>
+                        <div class="info">
+                            <p>Дата: 01.01.2020</p>
+                            <p>Время: 15:00</p>
+                            <p>Специалист: Иванов Иван Иванович</p>
+                        </div>
+                    </div>
+                    <div class="card-item red">
+                        <div class="headline">
+                            <span>Обследование сорвано</span>
+                        </div>
+                        <div class="info">
+                            <p>Дата: 01.01.2020</p>
+                            <p>Время: 15:00</p>
+                            <p>Специалист: Иванов Иван Иванович</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script >
+        let Header = new Vue({
+            el: 'Header',
+            data: {
+                menu: false,
+            }
+        })
+    </script>
+</body>
+</html>
